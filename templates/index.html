@@ -29,11 +29,27 @@
           <dt class="col-sm-3 text-right">App Name</dt>
           <dd class="col-sm-9">{{.AppName}}</dd>
           <dt class="col-sm-3 text-right">App Instance Index</dt>
-          <dd class="col-sm-9">{{.AppInstanceIndex}}</dd>
-          <dt class="col-sm-3 text-right">Database</dt>
-          <dd class="col-sm-9">{{.Database}}</dd>
+					<dd class="col-sm-9">{{.AppInstanceIndex}}</dd>
+					<dt class="col-sm-3 text-right">App Instance GUID</dt>
+          <dd class="col-sm-9">{{.AppInstanceGUID}}</dd>
           <dt class="col-sm-3 text-right">Space Name</dt>
-          <dd class="col-sm-9">{{.SpaceName}}</dd>
+					<dd class="col-sm-9">{{.SpaceName}}</dd>
+					<dt class="col-sm-3 text-right">Services</dt>
+					<dd class="col-sm-9">
+						<ul>
+						{{range .Services}}
+							<li>{{.Name}} ({{.Label}})</li>
+						{{end}}
+						</ul>
+					</dd>
+					<dt class="col-sm-3 text-right">Training Environment Variables</dt>
+					<dd class="col-sm-9">
+						<ul>
+						{{range .Envars}}
+							<li>{{.}}</li>
+						{{end}}
+						</ul>
+					</dd>
         </dl>
 			</div>
 			
