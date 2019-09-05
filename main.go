@@ -57,7 +57,7 @@ func main() {
 			}
 		}
 		for _, envar := range os.Environ() {
-			if strings.HasPrefix(envar, "training-") {
+			if strings.HasPrefix(envar, "TRAINING_") {
 				index.Envars = append(index.Envars, envar)
 			}
 		}
