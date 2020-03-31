@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -38,7 +39,10 @@ func main() {
 			http.FileServer(http.Dir("static"))))
 
 	if cfenv.IsRunningOnCF() {
-		appEnv, _ := cfenv.Current()
+		appEnv, err := cfenv.Current()
+		if err != nil {
+			log.Fatal(err)
+		}
 		if appEnv.Name != "" {
 			index.AppName = appEnv.Name
 		}
@@ -61,7 +65,7 @@ func main() {
 				index.Envars = append(index.Envars, envar)
 			}
 		}
-
+		``
 		// config := DBConfig{
 		// 	Hostname: os.Getenv("HOSTNAME"),
 		// 	Name:     os.Getenv("NAME"),
@@ -88,5 +92,10 @@ func main() {
 		os.Exit(1)
 	})
 
-	fmt.Println(http.ListenAndServe(":8080", nil))
+	var PORT string
+	if PORT = os.Getenv("PORT"); PORT == "" {
+		PORT = "8080"
+	}
+
+	fmt.Println(http.ListenAndServe(":"+PORT, nil))
 }
