@@ -65,7 +65,7 @@ func main() {
 				index.Envars = append(index.Envars, envar)
 			}
 		}
-		``
+
 		// config := DBConfig{
 		// 	Hostname: os.Getenv("HOSTNAME"),
 		// 	Name:     os.Getenv("NAME"),
